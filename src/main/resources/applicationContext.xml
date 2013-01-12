@@ -9,12 +9,13 @@
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
 	        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 	        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
-	        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd">
+	        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd"
+	        default-lazy-init="false">
 	        
-  <bean id="accountService" class="com.maxm.account.service.AccountService" scope="singleton">
+  <bean id="accountService" class="com.maxm.account.service.AccountService" scope="singleton" lazy-init="true">
   	<property name="accountDao" ref="accountDao"/>
   </bean>
-	<bean id="accountDao" class="com.maxm.account.dao.AccountDao" scope="singleton">
+	<bean id="accountDao" class="com.maxm.account.dao.AccountDao" scope="singleton" lazy-init="true">
 		<property name="desc" value="accountDao desc"></property>
 	</bean>
 
