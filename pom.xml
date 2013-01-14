@@ -10,9 +10,8 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>account-web</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
   <name>account-web Maven Webapp</name>
-  <url>http://***</url>
+  <url>https://github.com/mxiongmiao/account-web</url>
   
   <build>
     <finalName>account-web</finalName>
@@ -47,5 +46,17 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.ibatis</groupId>
+			<artifactId>ibatis-sqlmap</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+    </dependency>
   </dependencies>
 </project>

@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="
 			http://www.springframework.org/schema/beans 
-			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
-	default-lazy-init="false">
-	        
-  <bean id="accountService" class="com.maxm.account.service.AccountService" scope="singleton" lazy-init="true" init-method="init" destroy-method="destroy">
-  	<property name="accountDao" ref="accountDao"/>
+			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-lazy-init="true">
+	
+	<context:annotation-config/>
+	
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" scope="singleton">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <property name="driverClassName" value="${jdbc.driverClassName}"/>
+    <property name="url" value="${jdbc.url}"/>
+    <property name="username" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
   </bean>
-	<bean id="accountDao" class="com.maxm.account.dao.AccountDao" scope="singleton" lazy-init="true">
-		<property name="desc" value="accountDao desc"></property>
+	
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean" scope="singleton">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:sqlMapConfig.xml" />
+	</bean>
+	
+	<bean id="sqlMapAccountDao" class="com.maxm.account.dao.ibatis.SqlMapAccountDao" scope="singleton">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
 	</bean>
 
 </beans>

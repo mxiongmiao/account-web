@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Account">
+
+  <resultMap id="result" class="com.maxm.account.domain.Account">
+    <result property="id" column="id" columnIndex="1"/>
+    <result property="name" column="name" columnIndex="2"/>
+    <result property="url" column="url" columnIndex="3"/>
+    <result property="userName" column="userName" columnIndex="4"/>
+    <result property="pwd" column="pwd" columnIndex="5"/>
+    <result property="email" column="email" columnIndex="6"/>
+  </resultMap>
+  
+  <insert id="insertAccount">
+    insert into account (name, url, userName, pwd, email) values (#name#, #url#, #userName#, #pwd#, #email#)
+    <!-- The value of the type attribute can be either “pre” or “post” - 
+ meaning that the statement will be executed before or after the insert statement. 可以省略-->
+    <selectKey resultClass="int" type="pre" keyProperty="id" >
+        select LAST_INSERT_ID() as id
+    </selectKey>
+  </insert>
+
+  <select id="getAccountById" resultMap="result">
+  	select id, name, url, userName, pwd, email from account where id=#id#
+  </select>
+  
+  <delete id="deleteById">
+  	delete from account where id=#id#
+  </delete>
+  
+  <update id="updateAccount">
+  	update account set name=#name#, url=#url#, userName=#userName#, pwd=#pwd#, email=#email# where id=#id#
+  </update>
+  
+</sqlMap>

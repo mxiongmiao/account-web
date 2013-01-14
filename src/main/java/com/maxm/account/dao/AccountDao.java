@@ -1,24 +1,16 @@
 package com.maxm.account.dao;
 
-public class AccountDao {
-	
-	private String desc;
-	
-	public AccountDao() {
-		super();
-		System.out.println("new AccountDao");
-	}
-	
-	public void add(){
-		System.out.println("add account");
-	}
-	
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
+import com.maxm.account.domain.Account;
 
-	public String getDesc() {
-		return desc;
-	}
+
+public interface AccountDao {
+	
+	void insertAccount(Account account);
+	
+	void deleteAccount(int id);
+	
+	void updateAccount(Account account);
+	
+	Account getAccountById(int id);
 	
 }
