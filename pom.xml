@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
   
   <parent>
     <groupId>com.maxm</groupId>
@@ -7,14 +8,83 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   
-  <modelVersion>4.0.0</modelVersion>
   <artifactId>account-web</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>account-web Maven Webapp</name>
+  
+  <name>account-web</name>
   <url>https://github.com/mxiongmiao/account-web</url>
+  <description>account web end</description>
+  
+  <scm>
+      <connection>scm:git:git://github.com/mxiongmiao/account-web.git</connection>
+      <developerConnection>scm:git:git@github.com:mxiongmiao/account-web.git</developerConnection>
+      <url>https://github.com/mxiongmiao/account-web</url>
+  </scm>
+  
+	<inceptionYear>2013</inceptionYear>
+  <developers>
+    <developer>
+        <id>mxiongmiao</id>
+        <name>mxiongmiao</name>
+        <email>mxiongmiao@gmail.com</email>
+    </developer>
+  </developers>
+  <mailingLists>
+  	<mailingList>
+  		<name>mxiongmiao</name>
+  		<post>mxiongmiao@gmail.com</post>
+  	</mailingList>
+  </mailingLists>
+  <prerequisites>
+  	<maven>2.2.1</maven>
+  </prerequisites>
   
   <build>
     <finalName>account-web</finalName>
+    
+    <plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<skipTests>false</skipTests>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>${maven.compiler.source.version}</source>
+						<target>${maven.compiler.target.version}</target>
+						<encoding>${project.build.sourceEncoding}</encoding> 
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<!-- Multiple specifications of a set of goals to execute during the 
+ build lifecycle, each having (possibly) different configuration. -->
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+			</plugins>
   </build>
   
   <dependencies>
@@ -25,7 +95,7 @@
 		<dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <scope>${junit.scope}</scope>
+      <scope>test</scope>
     </dependency>
     <dependency>
 		 <groupId>org.springframework</groupId>

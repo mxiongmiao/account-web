@@ -11,9 +11,7 @@ import com.maxm.account.dao.ibatis.SqlMapAccountDao;
 import com.maxm.account.domain.Account;
 
 public class TestSqlMapAccountDao {
-	
 	private ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-	
 	private SqlMapAccountDao sqlMapAccountDao;
 	
 	@Before

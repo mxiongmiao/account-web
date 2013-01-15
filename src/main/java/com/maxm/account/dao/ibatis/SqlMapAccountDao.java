@@ -7,7 +7,6 @@ import com.maxm.account.dao.AccountDao;
 import com.maxm.account.domain.Account;
 
 public class SqlMapAccountDao implements AccountDao{
-	
 	private SqlMapClient sqlMapClient;
 	
 	public void setSqlMapClient(SqlMapClient sqlMapClient) {
@@ -52,5 +51,4 @@ public class SqlMapAccountDao implements AccountDao{
 		}
 		return account;
 	}
-	
 }
