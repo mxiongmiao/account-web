@@ -3,16 +3,19 @@ package com.maxm.account.domain;
 public class Account {
 
 	private int id;
-	
+	//	name不能重复
 	private String name;
 	private String url;
-	
 	private String userName;
 	private String pwd;
 	private String email;
 	
 	public Account() {
 		super();
+	}
+	
+	public void checkValidate() {
+		
 	}
 	
 	public int getId() {

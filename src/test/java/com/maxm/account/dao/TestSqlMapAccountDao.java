@@ -3,6 +3,7 @@ package com.maxm.account.dao;
 import junit.framework.Assert;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -30,14 +31,14 @@ public class TestSqlMapAccountDao {
 		sqlMapAccountDao.insertAccount(account);
 	}
 	
-	@Test
+	@Ignore
 	public void test_根据id查找一条记录(){
 		int id=2;
 		Account account = sqlMapAccountDao.getAccountById(id);
 		Assert.assertEquals(2, account.getId());
 	}
 	
-	@Test
+	@Ignore
 	public void test_更新一条记录(){
 		int id=7;
 		Account account = sqlMapAccountDao.getAccountById(id);
@@ -50,7 +51,7 @@ public class TestSqlMapAccountDao {
 		sqlMapAccountDao.updateAccount(account);
 	}
 	
-	@Test
+	@Ignore
 	public void test_根据id删除一条记录(){
 		int id=11;
 		sqlMapAccountDao.deleteAccount(id);

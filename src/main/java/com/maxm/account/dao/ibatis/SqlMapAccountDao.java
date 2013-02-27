@@ -6,12 +6,9 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.maxm.account.dao.AccountDao;
 import com.maxm.account.domain.Account;
 
-public class SqlMapAccountDao implements AccountDao{
-	private SqlMapClient sqlMapClient;
+public class SqlMapAccountDao implements AccountDao {
 	
-	public void setSqlMapClient(SqlMapClient sqlMapClient) {
-		this.sqlMapClient = sqlMapClient;
-	}
+	private SqlMapClient sqlMapClient;
 
 	@Override
 	public void insertAccount(Account account) {
@@ -46,6 +43,21 @@ public class SqlMapAccountDao implements AccountDao{
 		Account account=null;
 		try {
 			account = (Account)this.sqlMapClient.queryForObject("Account.getAccountById", id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return account;
+	}
+	
+	public void setSqlMapClient(SqlMapClient sqlMapClient) {
+		this.sqlMapClient = sqlMapClient;
+	}
+
+	@Override
+	public Account getAccountByName(String name) {
+		Account account=null;
+		try {
+			account = (Account)this.sqlMapClient.queryForObject("Account.getAccountByName", name);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
